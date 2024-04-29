@@ -1,17 +1,16 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose';
 
 const payrollSchema = new mongoose.Schema(
-  {
-    workerId: String,
-    date: String,
-    workerName: String,
-    desc: String,
-    total: Number,
-    payment: Number,
-    credit: Number,
-  },
+	{
+		workerId: String,
+		date: String,
+		desc: String,
+		total: Number,
+		payment: Number,
+		credit: Number,
+	},
 
-  { timestamps: true }
+	{ timestamps: true }
 );
 
-export default mongoose.model("Payroll", payrollSchema);
+export default mongoose.model('Payroll', payrollSchema);

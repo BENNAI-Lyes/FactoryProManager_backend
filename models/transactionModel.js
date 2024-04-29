@@ -1,19 +1,16 @@
 import mongoose from 'mongoose';
 
 const transactionSchema = new mongoose.Schema(
-  {
-    billNumber: Number,
-    billId: String,
-    id: String,
-    clientId: String,
-    clientName: String,
-    billAmount: String,
-    date: String,
-    vers: Number,
-    credit: Number,
-  },
+	{
+		billNumber: Number,
+		clientId: String,
+		date: String,
+		vers: Number,
+		billAmount: String,
+		credit: Number,
+	},
 
-  { timestamps: true }
+	{ timestamps: true }
 );
 
 export default mongoose.model('Transaction', transactionSchema);
