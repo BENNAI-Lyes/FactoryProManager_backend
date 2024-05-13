@@ -9,7 +9,8 @@ const bonSchema = new mongoose.Schema(
 		total: Number,
 		totalRemise: Number,
 		transportPrice: Number,
-		credit: Number,
+		newSold: Number,
+		oldSold: Number,
 
 		vers: {
 			type: [
@@ -58,6 +59,9 @@ const bonSchema = new mongoose.Schema(
 					},
 					quantity: {
 						type: Number,
+					},
+					date: {
+						type: String,
 					},
 				},
 			],
