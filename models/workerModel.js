@@ -1,31 +1,27 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose';
 
 const workerSchema = new mongoose.Schema(
-  {
-    name: {
-      type: String,
-      required: true,
-      unique: true,
-    },
-    email: {
-      type: String,
-    },
-    password: {
-      type: String,
-    },
-    profilePic: {
-      type: String,
-      default: "",
-    },
+	{
+		name: {
+			type: String,
+			required: true,
+			unique: true,
+		},
+		email: {
+			type: String,
+		},
+		password: {
+			type: String,
+		},
 
-    address: {
-      type: String,
-    },
-    phone: {
-      type: String,
-    },
-  },
-  { timestamps: true }
+		address: {
+			type: String,
+		},
+		phone: {
+			type: String,
+		},
+	},
+	{ timestamps: true }
 );
 
-export default mongoose.model("Worker", workerSchema);
+export default mongoose.model('Worker', workerSchema);

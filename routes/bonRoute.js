@@ -1,41 +1,37 @@
-import express from "express";
+import express from 'express';
 import {
-  createBon,
-  deleteBon,
-  getAll,
-  getBon,
-  updateBon,
-  getStats,
-  getSellsStats,
-  getStatsWithMonthId,
-} from "../controllers/bonController.js";
+	createBon,
+	deleteBon,
+	getAll,
+	getBon,
+	updateBon,
+	getSellsStats,
+	getProductsCreatedThisMonth,
+} from '../controllers/bonController.js';
 const router = express.Router();
-import { newBon } from "../validators/bonValidator.js";
-import { runValidation } from "../validators/index.js";
-import { verifyAdmin } from "../helpers/verifyToken.js";
+import { newBon } from '../validators/bonValidator.js';
+import { runValidation } from '../validators/index.js';
+import { verifyAdmin } from '../helpers/verifyToken.js';
 
 //create
-router.post("/", newBon, runValidation, verifyAdmin, createBon);
+router.post('/', newBon, runValidation, verifyAdmin, createBon);
 
 //update
-router.put("/:id", verifyAdmin, updateBon);
+router.put('/:id', verifyAdmin, updateBon);
 
 //delete
-router.delete("/:id", verifyAdmin, deleteBon);
+router.delete('/:id', verifyAdmin, deleteBon);
 
 //get one
-router.get("/find/:id", verifyAdmin, getBon);
+router.get('/find/:id', verifyAdmin, getBon);
 
 //getAll
-router.get("/", verifyAdmin, getAll);
+router.get('/', verifyAdmin, getAll);
 
-//stats
-router.get("/stats", verifyAdmin, getStatsWithMonthId);
-
-//Sells Stats
-router.get("/sells-stats", verifyAdmin, getSellsStats);
+// //Sells Stats
+router.get('/sells-stats', verifyAdmin, getSellsStats);
 
 //sells stats with month as id
-router.get("/sells-stats-monthId", verifyAdmin, getStatsWithMonthId);
+router.get('/created-this-month', verifyAdmin, getProductsCreatedThisMonth);
 
 export default router;

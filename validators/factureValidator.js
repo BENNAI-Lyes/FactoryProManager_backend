@@ -2,36 +2,33 @@ import { check } from 'express-validator';
 
 export const newFacture = [
 	check('clientId').not().isEmpty().withMessage('Client ID est required.'),
-	check('products')
-		.not()
-		.isEmpty()
-		.withMessage('les produits sont nécessaires'),
+	check('products').not().isEmpty().withMessage('Products are required'),
 	check('products.*.name')
 		.not()
 		.isEmpty()
-		.withMessage('le nom du produit est requis'),
+		.withMessage('Product name is required'),
 	check('products.*.quantity')
 		.not()
 		.isEmpty()
-		.withMessage('la quantité de produits est requise')
+		.withMessage('Product quantity is required')
 		.isNumeric()
-		.withMessage('la quantité de produits doit être un nombre')
+		.withMessage('Product quantity must be a number')
 		.isInt({ min: 0 })
-		.withMessage('la quantité de produits doit être supérieur à 0'),
+		.withMessage('Product quantity must be grater than 0.'),
 	check('products.*.price')
 		.not()
 		.isEmpty()
-		.withMessage('le prix des produits est requis')
+		.withMessage('Product price is required.')
 		.isNumeric()
-		.withMessage('le prix des produits doit être un nombre')
+		.withMessage('Product price must be number.')
 		.isInt({ min: 0 })
-		.withMessage('le prix des produits doit être supérieur à 0'),
+		.withMessage('Product price must be grater than 0.'),
 	check('products.*.total')
 		.not()
 		.isEmpty()
-		.withMessage('le total des produits est requis')
+		.withMessage('Product total price is required.')
 		.isNumeric()
-		.withMessage('le total des produits doit être un nombre')
+		.withMessage('Product total price must be number.')
 		.isInt({ min: 0 })
-		.withMessage('le total des produits doit être supérieur à 0'),
+		.withMessage('Product total price must be grater than 0.'),
 ];

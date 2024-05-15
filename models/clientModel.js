@@ -6,10 +6,6 @@ const clientSchema = new mongoose.Schema(
 			type: String,
 			unique: true,
 		},
-		profilePic: {
-			type: String,
-			default: '',
-		},
 		credit: {
 			type: Number,
 			default: 0,

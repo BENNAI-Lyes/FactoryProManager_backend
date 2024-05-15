@@ -8,7 +8,7 @@ const bonSchema = new mongoose.Schema(
 		remise: Number,
 		total: Number,
 		totalRemise: Number,
-		transportPrice: Number,
+		transport: Number,
 		newSold: Number,
 		oldSold: Number,
 

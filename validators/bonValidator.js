@@ -1,59 +1,56 @@
 import { check } from 'express-validator';
 
 export const newBon = [
-	check('transportPrice')
+	check('transport')
 		.isInt({ min: 1 })
-		.withMessage('Transport price is required'),
+		.withMessage('Transport price is required.'),
 	check('remise')
 		.isNumeric()
-		.withMessage('remise should be a number')
+		.withMessage('Discount should be a number')
 		.isInt({ min: 0 })
-		.withMessage('remise doit être supérieure à 0'),
+		.withMessage('Discount must be grater than 0.'),
 
-	check('products')
-		.not()
-		.isEmpty()
-		.withMessage('les produits sont nécessaires'),
+	check('products').not().isEmpty().withMessage('Products are required.'),
 	check('products.*.name')
 		.not()
 		.isEmpty()
-		.withMessage('le nom du produit est requis'),
+		.withMessage('Product name is required.'),
 	check('products.*.quantity')
 		.not()
 		.isEmpty()
-		.withMessage('la quantité de produits est requise')
+		.withMessage('Product quantity is required.')
 		.isNumeric()
-		.withMessage('la quantité de produits doit être un nombre')
+		.withMessage('Product quantity must be number.')
 		.isInt({ min: 0 })
-		.withMessage('la quantité de produits doit être supérieur à 0'),
+		.withMessage('Product quantity must be grater than 0.'),
 	check('products.*.price')
 		.not()
 		.isEmpty()
-		.withMessage('le prix des produits est requis')
+		.withMessage('Product price is required.')
 		.isNumeric()
-		.withMessage('le prix des produits doit être un nombre')
+		.withMessage('Product price must be a number')
 		.isInt({ min: 0 })
-		.withMessage('le prix des produits doit être supérieur à 0'),
+		.withMessage('Product price must be grater than 0.'),
 	check('products.*.total')
 		.not()
 		.isEmpty()
-		.withMessage('le total des produits est requis')
+		.withMessage('product total price is required.')
 		.isNumeric()
-		.withMessage('le total des produits doit être un nombre')
-		.withMessage('le total des produits doit être supérieur à 0'),
+		.withMessage('product total price must be a number.')
+		.withMessage('product total price must be grater than 0.'),
 
 	check('total')
 		.not()
 		.isEmpty()
-		.withMessage('total is required')
+		.withMessage('Total price is required.')
 		.isNumeric()
-		.withMessage('total should be a number')
+		.withMessage('Total price must be a number.')
 		.isInt({ min: 0 })
-		.withMessage('le total doit être supérieur à 0'),
+		.withMessage('total price must be grater than 0. '),
 
 	check('totalRemise')
 		.isNumeric()
-		.withMessage('total Remise Remisé doit être un nombre')
+		.withMessage('Total Price Discounted must be a number. ')
 		.isInt({ min: 0 })
-		.withMessage('remise totale doit être supérieur à 0'),
+		.withMessage('Total Price Discounted must be grater than 0.'),
 ];
