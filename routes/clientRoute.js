@@ -22,7 +22,13 @@ router.post(
 );
 
 //update
-router.put('/:id', verifyAdmin, updateClient);
+router.put(
+	'/:id',
+	clientRegisterValidator,
+	runValidation,
+	verifyAdmin,
+	updateClient
+);
 
 //delete
 router.delete('/:id', verifyAdmin, deleteClient);

@@ -82,8 +82,6 @@ export const getTotalClientsByMonth = async (req, res) => {
 			.startOf('month')
 			.toDate();
 
-		const endOfPreviousMonth = now.endOf('month').toDate();
-
 		const currentMonthCount = await Client.countDocuments({
 			createdAt: { $gte: startOfCurrentMonth },
 		});

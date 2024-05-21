@@ -1,4 +1,5 @@
 import Bon from '../models/bonModel.js';
+import moment from 'moment';
 
 //create new bon
 export const createBon = async (req, res, next) => {
@@ -60,40 +61,12 @@ export const getAll = async (req, res, next) => {
 	}
 };
 
-//get stats
-export const getStats = async (req, res, next) => {
-	try {
-		const bons = await Bon.aggregate([
-			{ $unwind: '$products' },
-			{
-				$group: {
-					_id: '$products.name',
-					data: {
-						$push: {
-							name: { $substr: ['$createdAt', 0, 7] },
-							quantity: '$products.quantity',
-						},
-					},
-				},
-			},
-		]);
-		res.status(200).json(bons);
-	} catch (error) {
-		next(error);
-	}
-};
-
 //get stats with month id
 export const getProductsCreatedThisMonth = async (req, res) => {
 	try {
-		const startOfMonth = new Date();
-		startOfMonth.setDate(1);
-		startOfMonth.setHours(0, 0, 0, 0);
-
-		const endOfMonth = new Date();
-		endOfMonth.setMonth(endOfMonth.getMonth() + 1);
-		endOfMonth.setDate(1);
-		endOfMonth.setHours(0, 0, 0, 0);
+		const now = moment();
+		const startOfMonth = now.startOf('month').toDate();
+		const endOfMonth = now.endOf('month').toDate();
 
 		const products = await Bon.find({
 			createdAt: {
